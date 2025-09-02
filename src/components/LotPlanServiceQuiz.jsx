@@ -58,25 +58,25 @@ const resultDetails = {
   'Land Owners & Sellers': {
     description:
       'We help you turn your property into a story, complete with visuals, marketing support, and featured listings to maximize value.',
-    cta: 'https://yourdomain.com/land-owners',
+    cta: 'https://www.lotplan.ca/landowners-sellers',
     ctaText: 'Explore Services for Land Owners',
   },
   'Future Homebuilders': {
     description:
       'From finding the perfect lot to visualizing what’s possible, we help you plan your custom home journey.',
-    cta: 'https://yourdomain.com/future-homebuilders',
+    cta: 'https://www.lotplan.ca/future-homebuilders',
     ctaText: 'Start Planning Your Custom Home',
   },
   'Homeowners & Investors': {
     description:
       'We guide you through ADU design and permitting that adds rental or living space and increases property value.',
-    cta: 'https://yourdomain.com/investors',
+    cta: 'https://www.lotplan.ca/homeowners-investors',
     ctaText: 'Get ADU Design Help',
   },
   'Realtors & Developers': {
     description:
       'We offer premium visuals, signage, and marketing strategy to help your listings stand out and sell fast.',
-    cta: 'https://yourdomain.com/realtors',
+    cta: 'https://www.lotplan.ca/realtors-developers',
     ctaText: 'Boost Your Listings',
   },
 };
@@ -129,7 +129,7 @@ export default function LotPlanServiceQuiz() {
         />
         <button
           onClick={handleEmailSubmit}
-          className="w-full max-w-md mx-auto mb-4 bg-blue-600 text-white px-4 py-2 rounded"
+          className="w-full max-w-md mx-auto mb-4 bg-[#449955] text-white px-4 py-2 rounded"
         >
           {ctaText}
         </button>

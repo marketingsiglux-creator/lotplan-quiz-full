@@ -96,6 +96,10 @@ export default function LotPlanServiceQuiz() {
   const [result, setResult] = useState(null);
   const [email, setEmail] = useState('');
 
+  const handleChange = (questionId, value) => {
+    setAnswers({ ...answers, [questionId]: value });
+  };
+
   const handleNext = () => {
     if (step < questions.length - 1) {
       setStep(step + 1);
@@ -105,25 +109,25 @@ export default function LotPlanServiceQuiz() {
     }
   };
 
-const handleEmailSubmit = async () => {
-  if (!email) return;
+  const handleEmailSubmit = async () => {
+    if (!email) return;
 
-  try {
-    await fetch('https://www.lotplan.ca/_functions/email-capture', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        result,
-      }),
-    });
+    try {
+      await fetch('https://www.lotplan.ca/_functions/email-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          result,
+        }),
+      });
 
-    window.location.href = resultDetails[result].cta;
-  } catch (err) {
-    console.error('Failed to send email to Wix:', err);
-    alert('There was a problem submitting your email. Please try again.');
-  }
-};
+      window.location.href = resultDetails[result].cta;
+    } catch (err) {
+      console.error('Failed to send email to Wix:', err);
+      alert('There was a problem submitting your email. Please try again.');
+    }
+  };
 
   if (result) {
     const { description, ctaText } = resultDetails[result];

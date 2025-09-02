@@ -143,7 +143,7 @@ export default function LotPlanServiceQuiz() {
   const currentQuestion = questions[step];
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-md rounded-2xl">
+    <div className="w-full max-w-xl mx-auto mt-6 px-4 sm:px-6 bg-white ...">
       {/* ✅ Green Progress Dots */}
       <div className="flex justify-center mb-6">
         {questions.map((_, index) => (

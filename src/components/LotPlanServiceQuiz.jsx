@@ -170,7 +170,7 @@ export default function LotPlanServiceQuiz() {
         <button
           disabled={!answers[currentQuestion.id]}
           onClick={handleNext}
-          className="bg-blue-600 text-white px-6 py-2 rounded-full disabled:opacity-50"
+          className="bg-[#449955] text-white px-6 py-2 rounded-full disabled:opacity-50"
         >
           {step === questions.length - 1 ? 'See My Result' : 'Next'}
         </button>

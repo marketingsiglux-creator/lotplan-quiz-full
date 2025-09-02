@@ -105,13 +105,25 @@ export default function LotPlanServiceQuiz() {
     }
   };
 
-  const handleChange = (questionId, value) => {
-    setAnswers({ ...answers, [questionId]: value });
-  };
+const handleEmailSubmit = async () => {
+  if (!email) return;
 
-  const handleEmailSubmit = () => {
+  try {
+    await fetch('https://www.lotplan.ca/_functions/email-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        result,
+      }),
+    });
+
     window.location.href = resultDetails[result].cta;
-  };
+  } catch (err) {
+    console.error('Failed to send email to Wix:', err);
+    alert('There was a problem submitting your email. Please try again.');
+  }
+};
 
   if (result) {
     const { description, ctaText } = resultDetails[result];

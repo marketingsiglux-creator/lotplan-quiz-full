@@ -94,7 +94,6 @@ export default function LotPlanServiceQuiz() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
-  const [email, setEmail] = useState('');
 
   const handleChange = (questionId, value) => {
     setAnswers({ ...answers, [questionId]: value });
@@ -109,53 +108,19 @@ export default function LotPlanServiceQuiz() {
     }
   };
 
-  const handleEmailSubmit = async () => {
-  if (!email) {
-    alert("Please enter an email.");
-    return;
-  }
-
-  try {
-    const response = await fetch('https://www.lotplan.ca/_functions/email-capture', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        result,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Wix server returned an error');
-    }
-
-    window.location.href = resultDetails[result].cta;
-  } catch (err) {
-    console.error('Failed to send email to Wix:', err);
-    alert('There was a problem submitting your email. Please try again.');
-  }
-};
-
   if (result) {
-    const { description, ctaText } = resultDetails[result];
+    const { description, ctaText, cta } = resultDetails[result];
     return (
       <div className="max-w-xl mx-auto mt-10 p-6 text-center bg-white rounded-2xl shadow-md">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Ideal LotPlan Service:</h2>
         <p className="text-xl text-[#449955] font-medium mb-4">{result}</p>
         <p className="mb-6 text-gray-600">{description}</p>
-        <input
-          type="email"
-          placeholder="Enter your email to get started"
-          className="mb-4 max-w-md mx-auto border border-gray-300 p-2 rounded w-full"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button
-          onClick={handleEmailSubmit}
-          className="w-full max-w-md mx-auto mb-4 bg-[#449955] text-white px-4 py-2 rounded"
+        <a
+          href={cta}
+          className="w-full max-w-md mx-auto mb-4 inline-block bg-[#449955] text-white px-4 py-2 rounded"
         >
           {ctaText}
-        </button>
+        </a>
         <button
           onClick={() => {
             setStep(0);

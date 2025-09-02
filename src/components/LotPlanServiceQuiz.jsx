@@ -118,7 +118,7 @@ export default function LotPlanServiceQuiz() {
     return (
       <div className="max-w-xl mx-auto mt-10 p-6 text-center bg-white rounded-2xl shadow-md">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Ideal LotPlan Service:</h2>
-        <p className="text-xl text-blue-600 font-medium mb-4">{result}</p>
+        <p className="text-xl text-[#449955] font-medium mb-4">{result}</p>
         <p className="mb-6 text-gray-600">{description}</p>
         <input
           type="email"

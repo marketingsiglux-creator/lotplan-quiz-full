@@ -111,7 +111,7 @@ export default function LotPlanServiceQuiz() {
   if (result) {
     const { description, ctaText, cta } = resultDetails[result];
     return (
-      <div className="max-w-xl mx-auto mt-10 p-6 text-center bg-white rounded-2xl shadow-md">
+      <div className="w-full max-w-xl mx-auto mt-6 px-4 sm:px-6 bg-white rounded-2xl shadow-md">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Ideal LotPlan Service:</h2>
         <p className="text-xl text-[#449955] font-medium mb-4">{result}</p>
         <p className="mb-6 text-gray-600">{description}</p>
@@ -143,7 +143,7 @@ export default function LotPlanServiceQuiz() {
   const currentQuestion = questions[step];
 
   return (
-    <div className="w-full max-w-xl mx-auto mt-6 px-4 sm:px-6 bg-white ...">
+    <div className="w-full max-w-xl mx-auto mt-6 px-4 sm:px-6 bg-white rounded-2xl shadow-md">
       {/* ✅ Green Progress Dots */}
       <div className="flex justify-center mb-6">
         {questions.map((_, index) => (

@@ -115,12 +115,17 @@ export default function LotPlanServiceQuiz() {
         <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Ideal LotPlan Service:</h2>
         <p className="text-xl text-[#449955] font-medium mb-4">{result}</p>
         <p className="mb-6 text-gray-600">{description}</p>
+
+        {/* ✅ Opens result page in a new tab */}
         <a
           href={cta}
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-full max-w-md mx-auto mb-4 inline-block bg-[#449955] text-white px-4 py-2 rounded"
         >
           {ctaText}
         </a>
+
         <button
           onClick={() => {
             setStep(0);
@@ -139,7 +144,20 @@ export default function LotPlanServiceQuiz() {
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-md rounded-2xl">
+      {/* ✅ Green Progress Dots */}
+      <div className="flex justify-center mb-6">
+        {questions.map((_, index) => (
+          <span
+            key={index}
+            className={`h-3 w-3 rounded-full mx-1 transition-all duration-300 ${
+              index === step ? 'bg-[#449955]' : 'bg-gray-300'
+            }`}
+          />
+        ))}
+      </div>
+
       <h2 className="text-2xl font-bold mb-6 text-gray-800">{currentQuestion.question}</h2>
+
       <div className="space-y-4">
         {currentQuestion.options.map((option) => (
           <label key={option.value} className="flex items-center gap-3 text-gray-700">
@@ -154,6 +172,7 @@ export default function LotPlanServiceQuiz() {
           </label>
         ))}
       </div>
+
       <div className="mt-6 text-right">
         <button
           disabled={!answers[currentQuestion.id]}

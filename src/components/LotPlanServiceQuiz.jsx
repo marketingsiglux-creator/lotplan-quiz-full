@@ -110,24 +110,31 @@ export default function LotPlanServiceQuiz() {
   };
 
   const handleEmailSubmit = async () => {
-    if (!email) return;
+  if (!email) {
+    alert("Please enter an email.");
+    return;
+  }
 
-    try {
-      await fetch('https://www.lotplan.ca/_functions/email-capture', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          result,
-        }),
-      });
+  try {
+    const response = await fetch('https://www.lotplan.ca/_functions/email-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        result,
+      }),
+    });
 
-      window.location.href = resultDetails[result].cta;
-    } catch (err) {
-      console.error('Failed to send email to Wix:', err);
-      alert('There was a problem submitting your email. Please try again.');
+    if (!response.ok) {
+      throw new Error('Wix server returned an error');
     }
-  };
+
+    window.location.href = resultDetails[result].cta;
+  } catch (err) {
+    console.error('Failed to send email to Wix:', err);
+    alert('There was a problem submitting your email. Please try again.');
+  }
+};
 
   if (result) {
     const { description, ctaText } = resultDetails[result];

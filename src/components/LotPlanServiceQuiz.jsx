@@ -111,7 +111,7 @@ export default function LotPlanServiceQuiz() {
   if (result) {
     const { description, ctaText, cta } = resultDetails[result];
     return (
-      <div className="w-full px-0 text-center bg-transparent">
+      <div className="w-full px-4 text-center bg-transparent">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Ideal LotPlan Service:</h2>
         <p className="text-xl text-[#449955] font-medium mb-4">{result}</p>
         <p className="mb-6 text-gray-600">{description}</p>
@@ -142,22 +142,10 @@ export default function LotPlanServiceQuiz() {
   const currentQuestion = questions[step];
 
   return (
-    <div className="w-full px-0 bg-transparent">
-      {/* ✅ Green Progress Dots */}
-      <div className="flex justify-center mb-6">
-        {questions.map((_, index) => (
-          <span
-            key={index}
-            className={`h-3 w-3 rounded-full mx-1 transition-all duration-300 ${
-              index === step ? 'bg-[#449955]' : 'bg-gray-300'
-            }`}
-          />
-        ))}
-      </div>
-
+    <div className="w-full px-4 text-center bg-transparent">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">{currentQuestion.question}</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 mb-8 text-left max-w-md mx-auto">
         {currentQuestion.options.map((option) => (
           <label key={option.value} className="flex items-center gap-3 text-gray-700">
             <input
@@ -172,7 +160,7 @@ export default function LotPlanServiceQuiz() {
         ))}
       </div>
 
-      <div className="mt-6 text-right">
+      <div className="mb-6">
         <button
           disabled={!answers[currentQuestion.id]}
           onClick={handleNext}
@@ -181,6 +169,8 @@ export default function LotPlanServiceQuiz() {
           {step === questions.length - 1 ? 'See My Result' : 'Next'}
         </button>
       </div>
+
+      <p className="text-sm text-gray-500">Step {step + 1} of {questions.length}</p>
     </div>
   );
 }
